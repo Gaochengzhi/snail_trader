@@ -1,0 +1,3 @@
+[submodule "binance-db"]
+	path = binance-db
+	url = https://github.com/Gaochengzhi/binance-db
