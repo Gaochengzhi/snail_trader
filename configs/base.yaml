@@ -1,0 +1,45 @@
+market:
+  universe: Binance
+  window: 365
+  fee: 0.0003
+
+llm:
+  active_fallback_list: ["gpt_free", "ollama"]
+  enable_streaming: false
+  max_retries: 3
+  retry_delay: 1.0
+  temperature: 0.7
+  max_tokens: null
+  
+  # 全局并发控制配置
+  concurrency_control:
+    enabled: true
+    global_queue_size: 100  # 全局队列大小
+  
+  providers:
+    gpt_light: # 
+      provider: gemini_flash
+      api_key: ${GEMINI_API_KEY}
+      base_url: https://api.tu-zi.com/v1
+      model: gemini-2.5-flash
+      max_concurrent: 5  # 该provider最大并发数
+    
+    gpt_free:
+      provider: openroute
+      api_key: ${OPENROUTER_API_KEY}
+      base_url: https://openrouter.ai/api/v1
+      model: deepseek/deepseek-chat-v3-0324:free
+      max_concurrent: 2  # 免费API限制并发数
+    
+    gpt_pro:
+      provider: gemini
+      api_key: ${GEMINI_API_KEY}
+      base_url: https://api.tu-zi.com/v1
+      model: gemini-2.5-pro-preview-06-05
+      max_concurrent: 3
+    
+    ollama:
+      provider: ollama
+      base_url: http://localhost:11434
+      model: qwen3:30b-a3b
+      max_concurrent: 1  # Ollama本地运行，限制并发数
