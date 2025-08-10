@@ -1,45 +1,145 @@
-market:
-  universe: Binance
-  window: 365
-  fee: 0.0003
-
 llm:
-  active_fallback_list: ["gpt_free", "ollama"]
+  active_fallback_list:
+    - gpt_light
+    - gpt_free
+    - ollama
   enable_streaming: false
   max_retries: 3
-  retry_delay: 1.0
-  temperature: 0.7
   max_tokens: null
-  
-  # 全局并发控制配置
-  concurrency_control:
-    enabled: true
-    global_queue_size: 100  # 全局队列大小
-  
   providers:
-    gpt_light: # 
-      provider: gemini_flash
-      api_key: ${GEMINI_API_KEY}
-      base_url: https://api.tu-zi.com/v1
-      model: gemini-2.5-flash
-      max_concurrent: 5  # 该provider最大并发数
-    
     gpt_free:
-      provider: openroute
       api_key: ${OPENROUTER_API_KEY}
       base_url: https://openrouter.ai/api/v1
+      max_concurrent: 5
       model: deepseek/deepseek-chat-v3-0324:free
-      max_concurrent: 2  # 免费API限制并发数
-    
-    gpt_pro:
-      provider: gemini
+      provider: openroute
+    gpt_light:
       api_key: ${GEMINI_API_KEY}
       base_url: https://api.tu-zi.com/v1
+      max_concurrent: 10
+      model: gemini-2.5-flash
+      provider: gemini_flash
+    gpt_pro:
+      api_key: ${GEMINI_API_KEY}
+      base_url: https://api.tu-zi.com/v1
+      max_concurrent: 8
       model: gemini-2.5-pro-preview-06-05
-      max_concurrent: 3
-    
+      provider: gemini
     ollama:
-      provider: ollama
       base_url: http://localhost:11434
-      model: qwen3:30b-a3b
-      max_concurrent: 1  # Ollama本地运行，限制并发数
+      max_concurrent: 1
+      model: qwen3:4b
+      provider: ollama
+  retry_delay: 1.0
+  temperature: 0.7
+market:
+  fee: 0.0003
+  universe: Binance
+  window: 365
+
+# Quantitative Trading Framework Configuration
+framework:
+  # Operating mode: 'live' or 'backtest'
+  mode: live
+  
+  # Global step interval for strategy execution (minutes)
+  global_step_interval_minutes: 5
+  
+  # Service monitoring interval (seconds)
+  service_monitor_interval: 10
+  
+  # ZeroMQ port configuration
+  ports:
+    global_events: 5555     # PUB/SUB for global events
+    market_data: 5556       # PUB/SUB for market data
+    task_results: 5557      # PUSH/PULL for task results
+    state_management: 5558  # REQ/REP for state operations
+  
+  # Database configuration
+  database:
+    # State management database
+    state_db_path: data/states.db
+    
+    # Analytics database
+    analytics_db_path: data/analytics.db
+    
+    # Historical data database (for backtest mode)
+    historical_db_path: data/historical.db
+  
+  # Data fetch service configuration
+  data_fetch:
+    # Data fetch interval in live mode (seconds)
+    fetch_interval_seconds: 30
+    
+    # Historical data path for backtest mode
+    historical_data_path: data/historical/
+    
+    # Data sources for live mode
+    sources:
+      - name: binance_spot
+        type: exchange
+        symbols: ['BTC/USDT', 'ETH/USDT']
+      - name: coinbase_pro
+        type: exchange
+        symbols: ['BTC/USD', 'ETH/USD']
+  
+  # Analytics service configuration
+  analytics:
+    # Trigger analysis after N task results
+    analysis_trigger_threshold: 100
+    
+    # Analysis interval regardless of threshold (minutes)
+    analysis_interval_minutes: 30
+    
+    # Maximum state versions to keep per strategy
+    max_state_versions_per_strategy: 10
+
+# Trading strategies configuration
+strategies:
+  example_btc_strategy:
+    symbols: ['BTC/USDT', 'ETH/USDT']
+    initial_capital: 10000
+    position_size: 1000
+    risk_threshold: 0.02
+    step_interval_minutes: 5
+    
+    # Strategy-specific task parameters
+    tasks:
+      market_analysis:
+        interval_seconds: 60
+        enabled: true
+      order_execution:
+        order_type: market
+        max_slippage: 0.005
+        timeout_seconds: 300
+
+  example_eth_strategy:
+    symbols: ['ETH/USDT', 'BTC/USDT']
+    initial_capital: 5000
+    position_size: 500
+    risk_threshold: 0.025
+    step_interval_minutes: 10
+    
+    tasks:
+      market_analysis:
+        interval_seconds: 120
+        enabled: true
+      order_execution:
+        order_type: limit
+        max_slippage: 0.003
+        timeout_seconds: 600
+
+# Logging configuration
+logging:
+  level: INFO
+  file: logs/framework.log
+  console: true
+  
+  # Service-specific log levels
+  services:
+    scheduler: INFO
+    data_fetch: INFO
+    data_analytics: INFO
+    state_management: INFO
+    strategies: INFO
+    tasks: DEBUG

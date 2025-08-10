@@ -1,0 +1,18 @@
+llm:
+  active_fallback_list: ["ollama"]
+  enable_streaming: false
+  max_retries: 3
+  retry_delay: 1.0
+  temperature: 0.7
+  max_tokens: null
+
+  concurrency_control:
+    enabled: true
+    global_queue_size: 50
+
+  providers:
+    ollama:
+      provider: ollama
+      base_url: http://localhost:11434
+      model: qwen3:4b
+      max_concurrent: 2

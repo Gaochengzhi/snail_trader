@@ -1,0 +1,5 @@
+mode:
+  interval: 10
+  name: test_core
+settings:
+  mode: live_trading
