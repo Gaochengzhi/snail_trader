@@ -39,70 +39,49 @@ market:
 
 # Quantitative Trading Framework Configuration
 framework:
-  # Operating mode: 'live' or 'backtest'
-  mode: live
-  
-  # Global step interval for strategy execution (minutes)
-  global_step_interval_minutes: 5
-  
-  # Service monitoring interval (seconds)
-  service_monitor_interval: 10
-  
+  mode: live # Operating mode: 'live' or 'backtest'
+  step_interval_minutes: 5
+
   # ZeroMQ port configuration
   ports:
-    global_events: 5555     # PUB/SUB for global events
-    market_data: 5556       # PUB/SUB for market data
-    task_results: 5557      # PUSH/PULL for task results
-    state_management: 5558  # REQ/REP for state operations
-  
+    global_events: 5555 # PUB/SUB for global events
+    market_data: 5556 # PUB/SUB for market data
+    task_results: 5557 # PUSH/PULL for task results
+    state_management: 5558 # REQ/REP for state operations
+
   # Database configuration
   database:
     # State management database
-    state_db_path: data/states.db
-    
-    # Analytics database
-    analytics_db_path: data/analytics.db
-    
+    state_db_path: db/states.db
+    # Analytics db
+    analytics_db_path: db/analytics.db
     # Historical data database (for backtest mode)
-    historical_db_path: data/historical.db
-  
+    historical_db_path: db/historical.db
+
   # Data fetch service configuration
   data_fetch:
     # Data fetch interval in live mode (seconds)
-    fetch_interval_seconds: 30
-    
+    fetch_interval_minutes: 15
     # Historical data path for backtest mode
-    historical_data_path: data/historical/
-    
+    historical_data_path: data/binance.duckdb
+
     # Data sources for live mode
     sources:
       - name: binance_spot
-        type: exchange
-        symbols: ['BTC/USDT', 'ETH/USDT']
-      - name: coinbase_pro
-        type: exchange
-        symbols: ['BTC/USD', 'ETH/USD']
-  
+        symbols: ["BTC/USDT", "ETH/USDT"]
+
   # Analytics service configuration
   analytics:
-    # Trigger analysis after N task results
-    analysis_trigger_threshold: 100
-    
-    # Analysis interval regardless of threshold (minutes)
-    analysis_interval_minutes: 30
-    
-    # Maximum state versions to keep per strategy
-    max_state_versions_per_strategy: 10
 
 # Trading strategies configuration
 strategies:
   example_btc_strategy:
-    symbols: ['BTC/USDT', 'ETH/USDT']
+    symbols: ["BTC/USDT", "ETH/USDT"]
     initial_capital: 10000
     position_size: 1000
     risk_threshold: 0.02
     step_interval_minutes: 5
-    
+
     # Strategy-specific task parameters
     tasks:
       market_analysis:
@@ -113,28 +92,12 @@ strategies:
         max_slippage: 0.005
         timeout_seconds: 300
 
-  example_eth_strategy:
-    symbols: ['ETH/USDT', 'BTC/USDT']
-    initial_capital: 5000
-    position_size: 500
-    risk_threshold: 0.025
-    step_interval_minutes: 10
-    
-    tasks:
-      market_analysis:
-        interval_seconds: 120
-        enabled: true
-      order_execution:
-        order_type: limit
-        max_slippage: 0.003
-        timeout_seconds: 600
-
 # Logging configuration
 logging:
   level: INFO
   file: logs/framework.log
   console: true
-  
+
   # Service-specific log levels
   services:
     scheduler: INFO
@@ -143,3 +106,6 @@ logging:
     state_management: INFO
     strategies: INFO
     tasks: DEBUG
+
+db:
+  duckdb_path: data/binance.duckdb

@@ -1,0 +1,58 @@
+# Data Service Test Configuration
+# Inherits from base configuration but with test-specific settings
+
+# Data service test configuration
+data_service_test:
+  # Test interval (seconds) - default 1 second
+  interval_seconds: 1
+
+  # Mock data configuration
+  mock_data:
+    symbols: ["BTC/USDT", "ETH/USDT", "BNB/USDT"]
+    price_ranges:
+      "BTC/USDT": [40000, 70000]
+      "ETH/USDT": [2000, 4000]
+      "BNB/USDT": [200, 600]
+
+  # Console output settings
+  output:
+    show_timestamp: true
+    format: "simple" # options: simple, detailed, json
+
+# Framework configuration for testing
+framework:
+  # Operating mode for data service testing
+  mode: test
+  # Service monitoring interval (seconds)
+
+  # Global step interval for strategy execution (minutes)
+  step_interval_minutes: 5
+  fetch_interval_minutes: 1 # Reduced fetch interval for testing
+
+  # ZeroMQ port configuration (inherit from base)
+  ports:
+    global_events: 5555
+    market_data: 5556
+    task_results: 5557
+    state_management: 5558
+
+# Enhanced logging configuration
+log_service:
+  directory: logs
+  console_output: true
+  file_output: true
+  max_file_size_mb: 10
+  backup_count: 3
+  levels: ["INFO", "DEBUG", "WARNING", "ERROR"]
+
+# Analytics service configuration
+analytics:
+  sma_windows: [5, 10, 20]
+  ema_alpha: 0.3
+  volatility_window: 20
+
+# Standard logging for service files
+logging:
+  level: INFO
+  directory: logs
+  file_logging: true

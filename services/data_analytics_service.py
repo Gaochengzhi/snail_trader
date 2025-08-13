@@ -1,432 +1,344 @@
 """
-DataAnalyticsService: Collects task results and triggers strategy reflection.
+DataAnalyticsService: Processes market data and generates analytics.
 
-Receives task results via PUSH/PULL pattern and stores them in DuckDB.
-When analysis conditions are met, performs analytics and publishes reflection updates.
+Features:
+- Subscribes to MARKET_DATA events from DataFetchService
+- Performs real-time data analysis (moving averages, volatility, etc.)
+- Publishes analytics results for strategies to consume
+- Integrates with LogService for structured output
 """
 
 import asyncio
 import json
-from typing import Dict, Any, Optional
-import duckdb
+from datetime import datetime
+from typing import Dict, Any, List, Optional
+from collections import defaultdict, deque
 
 from core import AbstractService, MessageBus, Topics, Ports
+from utils.log_utils import get_log_utils
 
 
 class DataAnalyticsService(AbstractService):
     """
-    Service for collecting and analyzing task results.
-    
-    Responsibilities:
-    1. Collect task results from all strategies via PUSH/PULL
-    2. Store results in DuckDB for persistence and analysis
-    3. Perform periodic analysis when conditions are met
-    4. Generate reflection events to update strategy prompts
+    Service responsible for processing market data and generating analytics.
+
+    Subscribes to market data events and performs real-time analysis:
+    - Moving averages (SMA, EMA)
+    - Volatility calculations
+    - Price change detection
+    - Volume analysis
     """
-    
+
     def __init__(self, config: Dict[str, Any]):
         super().__init__("data_analytics", config)
-        self.message_bus = DataAnalyticsMessageBus("data_analytics")
-        
-        # Configuration
-        self.db_path = config.get('duckdb_path', 'data/analytics.db')
-        self.analysis_trigger_threshold = config.get('analysis_trigger_threshold', 100)
-        self.analysis_interval_minutes = config.get('analysis_interval_minutes', 30)
-        
-        # Analytics state
-        self.db_conn: Optional[duckdb.DuckDBPyConnection] = None
-        self.task_results_count = 0
-        self.last_analysis_time = 0
-    
+        self.message_bus = MessageBus("data_analytics")
+
+        # Analytics configuration
+        analytics_config = config.get("analytics", {})
+        self.window_sizes = analytics_config.get("sma_windows", [5, 10, 20])
+        self.ema_alpha = analytics_config.get("ema_alpha", 0.3)
+        self.volatility_window = analytics_config.get("volatility_window", 20)
+
+        # Data storage for calculations
+        self.price_history: Dict[str, deque] = defaultdict(lambda: deque(maxlen=100))
+        self.volume_history: Dict[str, deque] = defaultdict(lambda: deque(maxlen=100))
+        self.analytics_results: Dict[str, Dict[str, Any]] = {}
+
+        # Integration with LogService
+        self.log_service = get_log_utils()
+        self.analytics_counter = 0
+
     async def initialize(self):
-        """Initialize analytics service and database."""
+        """Initialize analytics service and message subscriptions."""
         await super().initialize()
         await self.message_bus.initialize()
-        await self._initialize_database()
-    
-    async def _initialize_database(self):
-        """Initialize DuckDB for storing task results and analytics."""
-        try:
-            self.db_conn = duckdb.connect(self.db_path)
-            
-            # Create task_results table
-            self.db_conn.execute("""
-                CREATE TABLE IF NOT EXISTS task_results (
-                    id INTEGER PRIMARY KEY,
-                    task_id VARCHAR,
-                    strategy_id VARCHAR,
-                    timestamp DOUBLE,
-                    result_type VARCHAR,
-                    result_data TEXT,
-                    error_message VARCHAR,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                )
-            """)
-            
-            # Create analytics_reports table for storing analysis results
-            self.db_conn.execute("""
-                CREATE TABLE IF NOT EXISTS analytics_reports (
-                    id INTEGER PRIMARY KEY,
-                    report_type VARCHAR,
-                    strategy_id VARCHAR,
-                    analysis_period_start DOUBLE,
-                    analysis_period_end DOUBLE,
-                    metrics TEXT,
-                    recommendations TEXT,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                )
-            """)
-            
-            self.db_conn.commit()
-            self.logger.info(f"Initialized analytics database: {self.db_path}")
-            
-        except Exception as e:
-            self.logger.error(f"Failed to initialize database: {e}")
-            raise
-    
+
+        # Subscribe to market data events
+        self.message_bus.register_handler(Topics.MARKET_DATA, self._handle_market_data)
+
+        # Start subscription loop in background
+        asyncio.create_task(
+            self.message_bus.subscribe_loop(Ports.MARKET_DATA, [Topics.MARKET_DATA])
+        )
+
+        self.logger.info("DataAnalytics service initialized")
+
     async def async_run(self):
         """Main analytics service loop."""
         await self.initialize()
-        self._running = True
-        
+
         try:
-            # Start task results collection loop
-            results_task = asyncio.create_task(
-                self.message_bus.pull_results_loop(Ports.TASK_RESULTS)
+            self.log_service.log_message(
+                "Analytics", "INFO", "Starting Data Analytics Service", "SYSTEM"
             )
-            
-            # Start periodic analysis loop
-            analysis_task = asyncio.create_task(self._analysis_loop())
-            
-            # Wait for both tasks
-            await asyncio.gather(results_task, analysis_task)
-            
+
+            # Main service loop - most work is done in event handlers
+            while self._running:
+                await asyncio.sleep(1)
+
         except Exception as e:
             self.logger.error(f"DataAnalytics service error: {e}")
             raise
         finally:
             await self.cleanup()
-    
-    async def _analysis_loop(self):
+
+    async def _handle_market_data(self, message: Dict[str, Any]):
         """
-        Periodic analysis loop.
-        
-        Triggers analysis based on:
-        1. Task results count threshold
-        2. Time interval threshold
-        """
-        while self._running:
-            try:
-                current_time = asyncio.get_event_loop().time()
-                time_since_last_analysis = current_time - self.last_analysis_time
-                
-                # Check if we should trigger analysis
-                should_analyze = (
-                    self.task_results_count >= self.analysis_trigger_threshold or
-                    time_since_last_analysis >= (self.analysis_interval_minutes * 60)
-                )
-                
-                if should_analyze:
-                    await self._perform_analysis()
-                    self.last_analysis_time = current_time
-                    self.task_results_count = 0  # Reset counter
-                
-                # Check every minute
-                await asyncio.sleep(60)
-                
-            except Exception as e:
-                self.logger.error(f"Analysis loop error: {e}")
-                await asyncio.sleep(60)
-    
-    async def store_task_result(self, result_data: Dict[str, Any]):
-        """
-        Store task result in database.
-        
-        Called by the message bus when task results are received.
-        """
-        try:
-            # Extract result information
-            task_id = result_data.get('task_id', 'unknown')
-            strategy_id = result_data.get('strategy_id', 'unknown')
-            timestamp = result_data.get('timestamp', 0)
-            
-            # Determine if this is a result or error
-            if 'error' in result_data:
-                result_type = 'error'
-                result_json = json.dumps({'error': result_data['error']})
-                error_message = result_data['error']
-            else:
-                result_type = 'success'
-                result_json = json.dumps(result_data.get('result', {}))
-                error_message = None
-            
-            # Insert into database
-            self.db_conn.execute("""
-                INSERT INTO task_results 
-                (task_id, strategy_id, timestamp, result_type, result_data, error_message)
-                VALUES (?, ?, ?, ?, ?, ?)
-            """, (task_id, strategy_id, timestamp, result_type, result_json, error_message))
-            
-            self.db_conn.commit()
-            self.task_results_count += 1
-            
-            self.logger.debug(f"Stored task result: {task_id} from {strategy_id}")
-            
-        except Exception as e:
-            self.logger.error(f"Failed to store task result: {e}")
-    
-    async def _perform_analysis(self):
-        """
-        Perform analysis on accumulated task results.
-        
-        This method analyzes the task_results table and generates
-        insights that can be used to update strategy behavior.
-        """
-        try:
-            self.logger.info("Starting analysis of task results")
-            
-            # TODO: Implement actual analysis logic
-            # This could include:
-            # 1. Success/failure rate analysis by strategy
-            # 2. Performance trend analysis
-            # 3. Error pattern detection
-            # 4. Strategy comparison metrics
-            # 5. Risk assessment
-            
-            # Example analysis queries:
-            analyses = await self._run_analysis_queries()
-            
-            # Generate recommendations based on analysis
-            recommendations = await self._generate_recommendations(analyses)
-            
-            # Store analysis report
-            await self._store_analysis_report(analyses, recommendations)
-            
-            # Publish reflection updates if needed
-            if recommendations:
-                await self._publish_reflection_updates(recommendations)
-            
-            self.logger.info("Analysis completed successfully")
-            
-        except Exception as e:
-            self.logger.error(f"Analysis failed: {e}")
-    
-    async def _run_analysis_queries(self) -> Dict[str, Any]:
-        """
-        Run analysis queries on task results.
-        
-        Returns:
-            Dictionary containing analysis results
-        """
-        analyses = {}
-        
-        try:
-            # Strategy performance analysis
-            strategy_stats = self.db_conn.execute("""
-                SELECT 
-                    strategy_id,
-                    COUNT(*) as total_tasks,
-                    SUM(CASE WHEN result_type = 'success' THEN 1 ELSE 0 END) as successful_tasks,
-                    SUM(CASE WHEN result_type = 'error' THEN 1 ELSE 0 END) as failed_tasks,
-                    AVG(timestamp) as avg_timestamp
-                FROM task_results 
-                WHERE timestamp > ?
-                GROUP BY strategy_id
-            """, (asyncio.get_event_loop().time() - 3600,)).fetchall()  # Last hour
-            
-            analyses['strategy_performance'] = [
-                {
-                    'strategy_id': row[0],
-                    'total_tasks': row[1],
-                    'successful_tasks': row[2],
-                    'failed_tasks': row[3],
-                    'success_rate': row[2] / row[1] if row[1] > 0 else 0,
-                    'avg_timestamp': row[4]
-                }
-                for row in strategy_stats
-            ]
-            
-            # Error pattern analysis
-            error_patterns = self.db_conn.execute("""
-                SELECT 
-                    error_message,
-                    COUNT(*) as error_count,
-                    strategy_id
-                FROM task_results 
-                WHERE result_type = 'error' 
-                    AND timestamp > ?
-                GROUP BY error_message, strategy_id
-                ORDER BY error_count DESC
-                LIMIT 10
-            """, (asyncio.get_event_loop().time() - 3600,)).fetchall()
-            
-            analyses['error_patterns'] = [
-                {
-                    'error_message': row[0],
-                    'count': row[1],
-                    'strategy_id': row[2]
-                }
-                for row in error_patterns
-            ]
-            
-            self.logger.debug(f"Analysis completed: {len(analyses)} analysis types")
-            
-        except Exception as e:
-            self.logger.error(f"Analysis queries failed: {e}")
-            analyses = {}
-        
-        return analyses
-    
-    async def _generate_recommendations(self, analyses: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Generate recommendations based on analysis results.
-        
+        Handle incoming market data and perform analytics.
+
         Args:
-            analyses: Results from _run_analysis_queries
-            
-        Returns:
-            Dictionary containing recommendations for strategy updates
+            message: ZeroMQ message containing market data
         """
-        recommendations = {}
-        
         try:
-            # TODO: Implement recommendation logic
-            # This could include:
-            # 1. Suggest parameter adjustments for underperforming strategies
-            # 2. Recommend strategy disabling if error rates are too high
-            # 3. Suggest increasing task frequency for successful strategies
-            # 4. Recommend risk adjustments based on market conditions
-            
-            strategy_recommendations = {}
-            
-            for strategy_perf in analyses.get('strategy_performance', []):
-                strategy_id = strategy_perf['strategy_id']
-                success_rate = strategy_perf['success_rate']
-                
-                if success_rate < 0.5:  # Less than 50% success rate
-                    strategy_recommendations[strategy_id] = {
-                        'action': 'review_and_adjust',
-                        'reason': f'Low success rate: {success_rate:.2%}',
-                        'suggested_changes': [
-                            'Review task parameters',
-                            'Check for systematic errors',
-                            'Consider reducing task frequency'
-                        ]
-                    }
-                elif success_rate > 0.8:  # Greater than 80% success rate
-                    strategy_recommendations[strategy_id] = {
-                        'action': 'scale_up',
-                        'reason': f'High success rate: {success_rate:.2%}',
-                        'suggested_changes': [
-                            'Consider increasing task frequency',
-                            'Expand strategy scope',
-                            'Allocate more resources'
-                        ]
-                    }
-            
-            recommendations['strategy_adjustments'] = strategy_recommendations
-            
-            # Error-based recommendations
-            error_recommendations = []
-            for error_pattern in analyses.get('error_patterns', []):
-                if error_pattern['count'] > 5:  # Frequent errors
-                    error_recommendations.append({
-                        'strategy_id': error_pattern['strategy_id'],
-                        'error': error_pattern['error_message'],
-                        'frequency': error_pattern['count'],
-                        'action': 'investigate_and_fix'
-                    })
-            
-            recommendations['error_fixes'] = error_recommendations
-            
-            self.logger.debug(f"Generated {len(recommendations)} recommendation categories")
-            
+            data = message.get("data", {})
+            symbols_data = data.get("symbols", {})
+            timestamp = data.get("timestamp", datetime.now().timestamp())
+
+            # Process each symbol
+            analytics_results = {}
+            for symbol, symbol_data in symbols_data.items():
+                result = await self._analyze_symbol(symbol, symbol_data, timestamp)
+                if result:
+                    analytics_results[symbol] = result
+
+            # Store and publish results
+            if analytics_results:
+                self.analytics_results.update(analytics_results)
+                await self._publish_analytics(analytics_results, timestamp)
+
+                # Log analytics via LogService
+                self._log_analytics_results(analytics_results)
+
         except Exception as e:
-            self.logger.error(f"Failed to generate recommendations: {e}")
-            recommendations = {}
-        
-        return recommendations
-    
-    async def _store_analysis_report(self, analyses: Dict[str, Any], recommendations: Dict[str, Any]):
-        """Store analysis report in database for historical tracking."""
-        try:
-            current_time = asyncio.get_event_loop().time()
-            analysis_start = current_time - 3600  # Last hour
-            
-            self.db_conn.execute("""
-                INSERT INTO analytics_reports 
-                (report_type, strategy_id, analysis_period_start, analysis_period_end, metrics, recommendations)
-                VALUES (?, ?, ?, ?, ?, ?)
-            """, (
-                'periodic_analysis',
-                'all_strategies',
-                analysis_start,
-                current_time,
-                json.dumps(analyses),
-                json.dumps(recommendations)
-            ))
-            
-            self.db_conn.commit()
-            self.logger.debug("Stored analysis report in database")
-            
-        except Exception as e:
-            self.logger.error(f"Failed to store analysis report: {e}")
-    
-    async def _publish_reflection_updates(self, recommendations: Dict[str, Any]):
+            self.logger.error(f"Error handling market data: {e}")
+
+    async def _analyze_symbol(
+        self, symbol: str, symbol_data: Dict[str, Any], timestamp: float
+    ) -> Optional[Dict[str, Any]]:
         """
-        Publish reflection updates to notify strategies of recommended changes.
-        
+        Perform analytics on a single symbol.
+
         Args:
-            recommendations: Generated recommendations for strategy updates
+            symbol: Symbol identifier (e.g., 'BTC/USDT')
+            symbol_data: Price and volume data for the symbol
+            timestamp: Data timestamp
+
+        Returns:
+            Dictionary containing analytics results or None on error
         """
         try:
-            reflection_data = {
-                'timestamp': asyncio.get_event_loop().time(),
-                'type': 'analysis_based_reflection',
-                'recommendations': recommendations
+            price = symbol_data.get("price", 0)
+            volume = symbol_data.get("volume", 0)
+
+            if price <= 0:
+                return None
+
+            # Update price and volume history
+            self.price_history[symbol].append(price)
+            self.volume_history[symbol].append(volume)
+
+            # Calculate analytics
+            result = {
+                "symbol": symbol,
+                "timestamp": timestamp,
+                "current_price": price,
+                "current_volume": volume,
+                "analytics": {},
             }
-            
-            await self.message_bus.publish(
-                Topics.REFLECTION_UPDATE,
-                reflection_data,
-                port=Ports.GLOBAL_EVENTS
-            )
-            
-            self.logger.info(f"Published reflection updates for {len(recommendations)} recommendation types")
-            
+
+            # Simple Moving Averages
+            sma_results = self._calculate_sma(symbol, self.window_sizes)
+            if sma_results:
+                result["analytics"]["sma"] = sma_results
+
+            # Exponential Moving Average
+            ema_result = self._calculate_ema(symbol, self.ema_alpha)
+            if ema_result is not None:
+                result["analytics"]["ema"] = ema_result
+
+            # Price volatility (standard deviation)
+            volatility = self._calculate_volatility(symbol, self.volatility_window)
+            if volatility is not None:
+                result["analytics"]["volatility"] = volatility
+
+            # Price momentum (rate of change)
+            momentum = self._calculate_momentum(symbol, 5)  # 5-period momentum
+            if momentum is not None:
+                result["analytics"]["momentum"] = momentum
+
+            # Volume analysis
+            volume_analysis = self._analyze_volume(symbol)
+            if volume_analysis:
+                result["analytics"]["volume"] = volume_analysis
+
+            return result
+
         except Exception as e:
-            self.logger.error(f"Failed to publish reflection updates: {e}")
-    
+            self.logger.error(f"Error analyzing symbol {symbol}: {e}")
+            return None
+
+    def _calculate_sma(self, symbol: str, windows: List[int]) -> Dict[str, float]:
+        """Calculate Simple Moving Averages for different window sizes."""
+        prices = list(self.price_history[symbol])
+        if len(prices) < min(windows):
+            return {}
+
+        sma_results = {}
+        for window in windows:
+            if len(prices) >= window:
+                sma = sum(prices[-window:]) / window
+                sma_results[f"sma_{window}"] = round(sma, 2)
+
+        return sma_results
+
+    def _calculate_ema(self, symbol: str, alpha: float) -> Optional[float]:
+        """Calculate Exponential Moving Average."""
+        prices = list(self.price_history[symbol])
+        if len(prices) < 2:
+            return None
+
+        # Simple EMA calculation
+        ema = prices[0]
+        for price in prices[1:]:
+            ema = alpha * price + (1 - alpha) * ema
+
+        return round(ema, 2)
+
+    def _calculate_volatility(self, symbol: str, window: int) -> Optional[float]:
+        """Calculate price volatility (standard deviation)."""
+        prices = list(self.price_history[symbol])
+        if len(prices) < window:
+            return None
+
+        recent_prices = prices[-window:]
+        mean_price = sum(recent_prices) / len(recent_prices)
+
+        # Calculate standard deviation
+        variance = sum((price - mean_price) ** 2 for price in recent_prices) / len(
+            recent_prices
+        )
+        volatility = variance**0.5
+
+        # Return as percentage of mean price
+        return round((volatility / mean_price) * 100, 2)
+
+    def _calculate_momentum(self, symbol: str, periods: int) -> Optional[float]:
+        """Calculate price momentum (rate of change)."""
+        prices = list(self.price_history[symbol])
+        if len(prices) < periods + 1:
+            return None
+
+        current_price = prices[-1]
+        past_price = prices[-(periods + 1)]
+
+        momentum = ((current_price - past_price) / past_price) * 100
+        return round(momentum, 2)
+
+    def _analyze_volume(self, symbol: str) -> Dict[str, Any]:
+        """Analyze volume patterns."""
+        volumes = list(self.volume_history[symbol])
+        if len(volumes) < 5:
+            return {}
+
+        current_volume = volumes[-1]
+        avg_volume = sum(volumes[-5:]) / 5  # 5-period average
+
+        return {
+            "current": round(current_volume, 2),
+            "average_5": round(avg_volume, 2),
+            "volume_ratio": round(
+                current_volume / avg_volume if avg_volume > 0 else 0, 2
+            ),
+        }
+
+    async def _publish_analytics(
+        self, analytics_results: Dict[str, Any], timestamp: float
+    ):
+        """Publish analytics results via message bus."""
+        try:
+            analytics_message = {
+                "timestamp": timestamp,
+                "analytics": analytics_results,
+                "service": "data_analytics",
+            }
+
+            await self.message_bus.publish(
+                Topics.DATA_PROCESSED,  # Use DATA_PROCESSED topic for analytics
+                analytics_message,
+                port=Ports.GLOBAL_EVENTS,
+            )
+
+            self.logger.debug(
+                f"Published analytics for {len(analytics_results)} symbols"
+            )
+
+        except Exception as e:
+            self.logger.error(f"Failed to publish analytics: {e}")
+
+    def _log_analytics_results(self, analytics_results: Dict[str, Any]):
+        """Log analytics results via LogService."""
+        if not self.log_service:
+            return
+
+        self.analytics_counter += 1
+
+        # Log header
+        self.log_service.log_message(
+            "Analytics",
+            "INFO",
+            f"--- Analytics Update #{self.analytics_counter} ---",
+            "DATA",
+        )
+
+        # Log each symbol's analytics
+        for symbol, result in analytics_results.items():
+            current_price = result.get("current_price", 0)
+            analytics = result.get("analytics", {})
+
+            # Format analytics summary
+            summary_parts = [f"Price: ${current_price:,.2f}"]
+
+            # SMA values
+            sma_data = analytics.get("sma", {})
+            if sma_data:
+                sma_str = ", ".join(
+                    [f"SMA{k.split('_')[1]}: ${v:,.2f}" for k, v in sma_data.items()]
+                )
+                summary_parts.append(sma_str)
+
+            # EMA value
+            ema = analytics.get("ema")
+            if ema is not None:
+                summary_parts.append(f"EMA: ${ema:,.2f}")
+
+            # Volatility and momentum
+            volatility = analytics.get("volatility")
+            momentum = analytics.get("momentum")
+            if volatility is not None:
+                summary_parts.append(f"Vol: {volatility:.2f}%")
+            if momentum is not None:
+                summary_parts.append(f"Mom: {momentum:+.2f}%")
+
+            summary = " | ".join(summary_parts)
+
+            self.log_service.log_message(
+                "Analytics", "INFO", f"  {symbol}: {summary}", "DATA"
+            )
+
+        # Empty line for readability
+        self.log_service.log_message("Analytics", "INFO", "", "DATA")
+
     async def cleanup(self):
         """Clean up analytics service resources."""
         await super().cleanup()
         await self.message_bus.cleanup()
-        
-        if self.db_conn:
-            self.db_conn.close()
-            self.logger.info("Closed analytics database connection")
-        
+
+        if self.log_service:
+            self.log_service.log_message(
+                "Analytics",
+                "INFO",
+                f"Analytics service stopped. Processed {self.analytics_counter} updates.",
+                "SYSTEM",
+            )
+
         self.logger.info("DataAnalytics service cleaned up")
-
-
-class DataAnalyticsMessageBus(MessageBus):
-    """
-    Custom MessageBus for DataAnalyticsService.
-    
-    Overrides message handling to process task results.
-    """
-    
-    def __init__(self, service_name: str):
-        super().__init__(service_name)
-        self.analytics_service: Optional[DataAnalyticsService] = None
-    
-    def set_analytics_service(self, service: DataAnalyticsService):
-        """Set reference to analytics service for result processing."""
-        self.analytics_service = service
-    
-    async def _handle_pulled_message(self, message: Dict[str, Any]):
-        """Handle pulled task results."""
-        if self.analytics_service:
-            await self.analytics_service.store_task_result(message.get('data', {}))
-        else:
-            self.logger.warning("No analytics service reference set")

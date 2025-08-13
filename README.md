@@ -184,7 +184,7 @@ uv add pyzmq duckdb
 # 量化框架配置
 framework:
   mode: live                           # 运行模式: 'live' 或 'backtest'
-  global_step_interval_minutes: 5      # 全局步进间隔（分钟）
+  step_interval_minutes: 5      # 全局步进间隔（分钟）
   
   ports:                               # ZeroMQ 端口配置
     global_events: 5555                # 全局事件 PUB/SUB
@@ -193,9 +193,9 @@ framework:
     state_management: 5558             # 状态管理 REQ/REP
   
   database:                            # 数据库配置
-    state_db_path: data/states.db      # 状态数据库
-    analytics_db_path: data/analytics.db # 分析数据库
-    historical_db_path: data/historical.db # 历史数据库
+    state_db_path: db/states.db      # 状态数据库
+    analytics_db_path: db/analytics.db # 分析数据库
+    historical_db_path: db/historical.db # 历史数据库
 
 # 策略配置
 strategies:
