@@ -1,0 +1,61 @@
+# 回测模式配置
+# 从历史时间开始快速向前回测
+
+# 时间控制配置
+time_control:
+  run_from_datetime: "2025-08-05T00:00:00"  
+  run_to_datetime: "2025-08-14T23:59:59"    
+  mode: "backtest"                          # 回测模式
+  interval_hours: 4                         # 每次推进4小时
+  execution_interval_seconds: 1             # 0秒间隔=立即执行
+
+# 数据访问配置
+data_access:
+  duckdb:
+    db_path: "data/binance.duckdb"
+    data_path: "data"
+  api:
+    base_url: "https://fapi.binance.com"
+    default_rate_limit: 30
+    default_timeout: 20
+    max_concurrent: 10
+    rate_limiter:
+      initial_rate: 30.0
+      min_rate: 1.0
+      max_rate: 60.0
+      backoff_factor: 0.5
+      recovery_factor: 1.1
+      timeout_threshold: 10.0
+      error_threshold: 3
+
+# 指标引擎配置
+indicators:
+  cache:
+    max_entries_per_symbol: 1000  # 回测需要更大缓存
+    cleanup_interval_minutes: 60
+  window:
+    max_window_size: 250
+
+# Framework配置
+framework:
+  mode: backtest
+  ports:
+    global_events: 5555
+    market_data: 5556
+    task_results: 5557
+    state_management: 5558
+
+# WebUI服务配置
+webui:
+  enabled: false
+  host: "0.0.0.0"
+  port: 8080
+
+# 日志配置
+log_service:
+  directory: logs
+  console_output: true
+  file_output: true
+  max_file_size_mb: 10
+  backup_count: 3
+  levels: ["INFO", "DEBUG", "WARNING", "ERROR"]

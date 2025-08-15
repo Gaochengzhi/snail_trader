@@ -1,0 +1,2057 @@
+{
+  "last_updated": "2025-08-16",
+  "symbols": {
+    "BTCUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "ETHUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "BCHUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "XRPUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "LTCUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "TRXUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "ETCUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "LINKUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "XLMUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "ADAUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "XMRUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "DASHUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "ZECUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "XTZUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "BNBUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "ATOMUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "ONTUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "IOTAUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "BATUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "VETUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "NEOUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "QTUMUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "IOSTUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "THETAUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "ALGOUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "ZILUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "KNCUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "ZRXUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "COMPUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "OMGUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "inactive"
+    },
+    "DOGEUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "SXPUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "KAVAUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "BANDUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "RLCUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "WAVESUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "inactive"
+    },
+    "MKRUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "SNXUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "DOTUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "DEFIUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "inactive"
+    },
+    "YFIUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "BALUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "inactive"
+    },
+    "CRVUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "TRBUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "RUNEUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "SUSHIUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "EGLDUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "SOLUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "ICXUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "STORJUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "BLZUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "inactive"
+    },
+    "UNIUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "AVAXUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "FTMUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "inactive"
+    },
+    "ENJUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "FLMUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "RENUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "inactive"
+    },
+    "KSMUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "NEARUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "AAVEUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "FILUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "RSRUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "LRCUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "OCEANUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "inactive"
+    },
+    "BELUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "AXSUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "ALPHAUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "ZENUSDT": {
+      "listing_date": "2019-09-25",
+      "status": "active"
+    },
+    "SKLUSDT": {
+      "listing_date": "2020-08-24",
+      "status": "active"
+    },
+    "GRTUSDT": {
+      "listing_date": "2020-12-18",
+      "status": "active"
+    },
+    "1INCHUSDT": {
+      "listing_date": "2020-12-25",
+      "status": "active"
+    },
+    "CHZUSDT": {
+      "listing_date": "2021-01-21",
+      "status": "active"
+    },
+    "SANDUSDT": {
+      "listing_date": "2021-01-18",
+      "status": "active"
+    },
+    "ANKRUSDT": {
+      "listing_date": "2021-01-25",
+      "status": "active"
+    },
+    "LITUSDT": {
+      "listing_date": "2021-02-17",
+      "status": "inactive"
+    },
+    "UNFIUSDT": {
+      "listing_date": "2021-02-09",
+      "status": "inactive"
+    },
+    "REEFUSDT": {
+      "listing_date": "2021-01-25",
+      "status": "inactive"
+    },
+    "RVNUSDT": {
+      "listing_date": "2021-02-23",
+      "status": "active"
+    },
+    "SFPUSDT": {
+      "listing_date": "2021-02-24",
+      "status": "active"
+    },
+    "XEMUSDT": {
+      "listing_date": "2021-03-02",
+      "status": "inactive"
+    },
+    "BTCSTUSDT": {
+      "listing_date": "2021-03-03",
+      "status": "inactive"
+    },
+    "COTIUSDT": {
+      "listing_date": "2021-03-09",
+      "status": "active"
+    },
+    "CHRUSDT": {
+      "listing_date": "2021-03-12",
+      "status": "active"
+    },
+    "MANAUSDT": {
+      "listing_date": "2021-03-14",
+      "status": "active"
+    },
+    "ALICEUSDT": {
+      "listing_date": "2021-03-15",
+      "status": "active"
+    },
+    "HBARUSDT": {
+      "listing_date": "2021-03-17",
+      "status": "active"
+    },
+    "ONEUSDT": {
+      "listing_date": "2021-03-17",
+      "status": "active"
+    },
+    "LINAUSDT": {
+      "listing_date": "2021-03-17",
+      "status": "inactive"
+    },
+    "STMXUSDT": {
+      "listing_date": "2021-03-17",
+      "status": "inactive"
+    },
+    "DENTUSDT": {
+      "listing_date": "2021-03-23",
+      "status": "active"
+    },
+    "CELRUSDT": {
+      "listing_date": "2021-03-29",
+      "status": "active"
+    },
+    "HOTUSDT": {
+      "listing_date": "2021-03-30",
+      "status": "active"
+    },
+    "MTLUSDT": {
+      "listing_date": "2021-03-31",
+      "status": "active"
+    },
+    "OGNUSDT": {
+      "listing_date": "2021-03-31",
+      "status": "active"
+    },
+    "NKNUSDT": {
+      "listing_date": "2021-04-08",
+      "status": "active"
+    },
+    "SCUSDT": {
+      "listing_date": "2021-04-12",
+      "status": "inactive"
+    },
+    "DGBUSDT": {
+      "listing_date": "2021-04-19",
+      "status": "inactive"
+    },
+    "1000SHIBUSDT": {
+      "listing_date": "2021-05-10",
+      "status": "active"
+    },
+    "BAKEUSDT": {
+      "listing_date": "2021-05-18",
+      "status": "active"
+    },
+    "GTCUSDT": {
+      "listing_date": "2021-03-15",
+      "status": "active"
+    },
+    "BTCDOMUSDT": {
+      "listing_date": "2021-06-17",
+      "status": "active"
+    },
+    "IOTXUSDT": {
+      "listing_date": "2021-08-11",
+      "status": "active"
+    },
+    "RAYUSDT": {
+      "listing_date": "2021-08-18",
+      "status": "inactive"
+    },
+    "C98USDT": {
+      "listing_date": "2021-08-23",
+      "status": "active"
+    },
+    "MASKUSDT": {
+      "listing_date": "2021-07-16",
+      "status": "active"
+    },
+    "ATAUSDT": {
+      "listing_date": "2021-08-30",
+      "status": "active"
+    },
+    "DYDXUSDT": {
+      "listing_date": "2021-09-09",
+      "status": "active"
+    },
+    "1000XECUSDT": {
+      "listing_date": "2021-09-16",
+      "status": "active"
+    },
+    "GALAUSDT": {
+      "listing_date": "2021-09-17",
+      "status": "active"
+    },
+    "CELOUSDT": {
+      "listing_date": "2021-09-26",
+      "status": "active"
+    },
+    "ARUSDT": {
+      "listing_date": "2021-09-28",
+      "status": "active"
+    },
+    "KLAYUSDT": {
+      "listing_date": "2021-10-11",
+      "status": "inactive"
+    },
+    "ARPAUSDT": {
+      "listing_date": "2021-10-18",
+      "status": "active"
+    },
+    "CTSIUSDT": {
+      "listing_date": "2021-10-25",
+      "status": "active"
+    },
+    "LPTUSDT": {
+      "listing_date": "2021-11-10",
+      "status": "active"
+    },
+    "ENSUSDT": {
+      "listing_date": "2021-11-29",
+      "status": "active"
+    },
+    "PEOPLEUSDT": {
+      "listing_date": "2021-12-23",
+      "status": "active"
+    },
+    "ROSEUSDT": {
+      "listing_date": "2021-12-31",
+      "status": "active"
+    },
+    "DUSKUSDT": {
+      "listing_date": "2022-01-06",
+      "status": "active"
+    },
+    "FLOWUSDT": {
+      "listing_date": "2022-02-09",
+      "status": "active"
+    },
+    "IMXUSDT": {
+      "listing_date": "2022-02-10",
+      "status": "active"
+    },
+    "API3USDT": {
+      "listing_date": "2022-02-21",
+      "status": "active"
+    },
+    "GMTUSDT": {
+      "listing_date": "2022-03-14",
+      "status": "active"
+    },
+    "APEUSDT": {
+      "listing_date": "2022-03-17",
+      "status": "active"
+    },
+    "WOOUSDT": {
+      "listing_date": "2022-04-07",
+      "status": "active"
+    },
+    "FTTUSDT": {
+      "listing_date": "2022-04-14",
+      "status": "inactive"
+    },
+    "JASMYUSDT": {
+      "listing_date": "2022-04-19",
+      "status": "active"
+    },
+    "DARUSDT": {
+      "listing_date": "2022-04-28",
+      "status": "inactive"
+    },
+    "OPUSDT": {
+      "listing_date": "2022-06-01",
+      "status": "active"
+    },
+    "INJUSDT": {
+      "listing_date": "2022-08-16",
+      "status": "active"
+    },
+    "STGUSDT": {
+      "listing_date": "2022-08-24",
+      "status": "active"
+    },
+    "SPELLUSDT": {
+      "listing_date": "2022-09-05",
+      "status": "active"
+    },
+    "1000LUNCUSDT": {
+      "listing_date": "2022-09-08",
+      "status": "active"
+    },
+    "LUNA2USDT": {
+      "listing_date": "2022-09-09",
+      "status": "active"
+    },
+    "LDOUSDT": {
+      "listing_date": "2022-09-21",
+      "status": "active"
+    },
+    "ICPUSDT": {
+      "listing_date": "2021-07-30",
+      "status": "active"
+    },
+    "APTUSDT": {
+      "listing_date": "2022-10-18",
+      "status": "active"
+    },
+    "QNTUSDT": {
+      "listing_date": "2022-10-18",
+      "status": "active"
+    },
+    "FETUSDT": {
+      "listing_date": "2023-01-15",
+      "status": "active"
+    },
+    "FXSUSDT": {
+      "listing_date": "2023-01-19",
+      "status": "active"
+    },
+    "HOOKUSDT": {
+      "listing_date": "2023-01-19",
+      "status": "active"
+    },
+    "MAGICUSDT": {
+      "listing_date": "2023-01-23",
+      "status": "active"
+    },
+    "TUSDT": {
+      "listing_date": "2023-01-31",
+      "status": "active"
+    },
+    "HIGHUSDT": {
+      "listing_date": "2023-02-03",
+      "status": "active"
+    },
+    "MINAUSDT": {
+      "listing_date": "2023-02-03",
+      "status": "active"
+    },
+    "ASTRUSDT": {
+      "listing_date": "2023-02-13",
+      "status": "active"
+    },
+    "AGIXUSDT": {
+      "listing_date": "2023-02-15",
+      "status": "inactive"
+    },
+    "PHBUSDT": {
+      "listing_date": "2023-02-15",
+      "status": "active"
+    },
+    "GMXUSDT": {
+      "listing_date": "2023-02-16",
+      "status": "active"
+    },
+    "CFXUSDT": {
+      "listing_date": "2023-02-19",
+      "status": "active"
+    },
+    "STXUSDT": {
+      "listing_date": "2023-02-20",
+      "status": "active"
+    },
+    "BNXUSDT": {
+      "listing_date": "2023-02-22",
+      "status": "inactive"
+    },
+    "ACHUSDT": {
+      "listing_date": "2023-02-21",
+      "status": "active"
+    },
+    "SSVUSDT": {
+      "listing_date": "2023-02-23",
+      "status": "active"
+    },
+    "CKBUSDT": {
+      "listing_date": "2023-02-27",
+      "status": "active"
+    },
+    "PERPUSDT": {
+      "listing_date": "2023-03-05",
+      "status": "active"
+    },
+    "TRUUSDT": {
+      "listing_date": "2023-03-06",
+      "status": "active"
+    },
+    "LQTYUSDT": {
+      "listing_date": "2023-03-08",
+      "status": "active"
+    },
+    "USDCUSDT": {
+      "listing_date": "2023-03-12",
+      "status": "active"
+    },
+    "IDUSDT": {
+      "listing_date": "2023-03-23",
+      "status": "active"
+    },
+    "ARBUSDT": {
+      "listing_date": "2023-03-23",
+      "status": "active"
+    },
+    "JOEUSDT": {
+      "listing_date": "2023-03-28",
+      "status": "active"
+    },
+    "TLMUSDT": {
+      "listing_date": "2023-03-29",
+      "status": "active"
+    },
+    "AMBUSDT": {
+      "listing_date": "2023-03-29",
+      "status": "inactive"
+    },
+    "LEVERUSDT": {
+      "listing_date": "2023-03-29",
+      "status": "active"
+    },
+    "RDNTUSDT": {
+      "listing_date": "2023-04-04",
+      "status": "active"
+    },
+    "HFTUSDT": {
+      "listing_date": "2023-04-05",
+      "status": "active"
+    },
+    "XVSUSDT": {
+      "listing_date": "2023-04-12",
+      "status": "active"
+    },
+    "BLURUSDT": {
+      "listing_date": "2023-04-27",
+      "status": "active"
+    },
+    "EDUUSDT": {
+      "listing_date": "2023-04-28",
+      "status": "active"
+    },
+    "IDEXUSDT": {
+      "listing_date": "2023-05-02",
+      "status": "inactive"
+    },
+    "SUIUSDT": {
+      "listing_date": "2023-05-03",
+      "status": "active"
+    },
+    "1000PEPEUSDT": {
+      "listing_date": "2023-05-05",
+      "status": "active"
+    },
+    "1000FLOKIUSDT": {
+      "listing_date": "2023-05-06",
+      "status": "active"
+    },
+    "UMAUSDT": {
+      "listing_date": "2023-05-09",
+      "status": "active"
+    },
+    "RADUSDT": {
+      "listing_date": "2023-05-09",
+      "status": "inactive"
+    },
+    "KEYUSDT": {
+      "listing_date": "2023-05-23",
+      "status": "inactive"
+    },
+    "COMBOUSDT": {
+      "listing_date": "2023-06-02",
+      "status": "inactive"
+    },
+    "NMRUSDT": {
+      "listing_date": "2023-06-22",
+      "status": "active"
+    },
+    "MAVUSDT": {
+      "listing_date": "2023-06-29",
+      "status": "active"
+    },
+    "MDTUSDT": {
+      "listing_date": "2023-06-30",
+      "status": "inactive"
+    },
+    "XVGUSDT": {
+      "listing_date": "2023-07-05",
+      "status": "active"
+    },
+    "WLDUSDT": {
+      "listing_date": "2023-07-24",
+      "status": "active"
+    },
+    "PENDLEUSDT": {
+      "listing_date": "2023-07-28",
+      "status": "active"
+    },
+    "ARKMUSDT": {
+      "listing_date": "2023-07-28",
+      "status": "active"
+    },
+    "AGLDUSDT": {
+      "listing_date": "2023-07-29",
+      "status": "active"
+    },
+    "YGGUSDT": {
+      "listing_date": "2023-08-05",
+      "status": "active"
+    },
+    "DODOXUSDT": {
+      "listing_date": "2023-08-08",
+      "status": "active"
+    },
+    "BNTUSDT": {
+      "listing_date": "2023-08-10",
+      "status": "active"
+    },
+    "OXTUSDT": {
+      "listing_date": "2023-08-11",
+      "status": "active"
+    },
+    "SEIUSDT": {
+      "listing_date": "2023-08-17",
+      "status": "active"
+    },
+    "CYBERUSDT": {
+      "listing_date": "2023-08-21",
+      "status": "active"
+    },
+    "HIFIUSDT": {
+      "listing_date": "2023-09-16",
+      "status": "active"
+    },
+    "ARKUSDT": {
+      "listing_date": "2023-09-19",
+      "status": "active"
+    },
+    "GLMRUSDT": {
+      "listing_date": "2023-09-26",
+      "status": "inactive"
+    },
+    "BICOUSDT": {
+      "listing_date": "2023-09-28",
+      "status": "active"
+    },
+    "STRAXUSDT": {
+      "listing_date": "2023-10-11",
+      "status": "inactive"
+    },
+    "LOOMUSDT": {
+      "listing_date": "2023-10-11",
+      "status": "inactive"
+    },
+    "BIGTIMEUSDT": {
+      "listing_date": "2023-10-12",
+      "status": "active"
+    },
+    "BONDUSDT": {
+      "listing_date": "2023-10-15",
+      "status": "inactive"
+    },
+    "ORBSUSDT": {
+      "listing_date": "2023-10-17",
+      "status": "inactive"
+    },
+    "STPTUSDT": {
+      "listing_date": "2023-10-18",
+      "status": "inactive"
+    },
+    "WAXPUSDT": {
+      "listing_date": "2023-10-18",
+      "status": "active"
+    },
+    "BSVUSDT": {
+      "listing_date": "2023-10-20",
+      "status": "active"
+    },
+    "RIFUSDT": {
+      "listing_date": "2023-10-21",
+      "status": "active"
+    },
+    "POLYXUSDT": {
+      "listing_date": "2023-10-25",
+      "status": "active"
+    },
+    "GASUSDT": {
+      "listing_date": "2023-10-25",
+      "status": "active"
+    },
+    "POWRUSDT": {
+      "listing_date": "2023-10-27",
+      "status": "active"
+    },
+    "TIAUSDT": {
+      "listing_date": "2023-11-01",
+      "status": "active"
+    },
+    "SNTUSDT": {
+      "listing_date": "2023-11-02",
+      "status": "inactive"
+    },
+    "CAKEUSDT": {
+      "listing_date": "2023-11-02",
+      "status": "active"
+    },
+    "MEMEUSDT": {
+      "listing_date": "2023-11-03",
+      "status": "active"
+    },
+    "TWTUSDT": {
+      "listing_date": "2023-11-03",
+      "status": "active"
+    },
+    "TOKENUSDT": {
+      "listing_date": "2023-11-03",
+      "status": "active"
+    },
+    "ORDIUSDT": {
+      "listing_date": "2023-11-07",
+      "status": "active"
+    },
+    "STEEMUSDT": {
+      "listing_date": "2023-11-08",
+      "status": "active"
+    },
+    "BADGERUSDT": {
+      "listing_date": "2023-11-09",
+      "status": "inactive"
+    },
+    "ILVUSDT": {
+      "listing_date": "2023-11-11",
+      "status": "active"
+    },
+    "NTRNUSDT": {
+      "listing_date": "2023-11-14",
+      "status": "active"
+    },
+    "KASUSDT": {
+      "listing_date": "2023-11-17",
+      "status": "active"
+    },
+    "BEAMXUSDT": {
+      "listing_date": "2023-11-17",
+      "status": "active"
+    },
+    "1000BONKUSDT": {
+      "listing_date": "2023-11-22",
+      "status": "active"
+    },
+    "PYTHUSDT": {
+      "listing_date": "2023-11-22",
+      "status": "active"
+    },
+    "SUPERUSDT": {
+      "listing_date": "2023-11-26",
+      "status": "active"
+    },
+    "USTCUSDT": {
+      "listing_date": "2023-11-27",
+      "status": "active"
+    },
+    "ONGUSDT": {
+      "listing_date": "2023-11-27",
+      "status": "active"
+    },
+    "ETHWUSDT": {
+      "listing_date": "2023-11-28",
+      "status": "active"
+    },
+    "JTOUSDT": {
+      "listing_date": "2023-12-08",
+      "status": "active"
+    },
+    "1000SATSUSDT": {
+      "listing_date": "2023-12-12",
+      "status": "active"
+    },
+    "AUCTIONUSDT": {
+      "listing_date": "2023-12-15",
+      "status": "active"
+    },
+    "1000RATSUSDT": {
+      "listing_date": "2023-12-15",
+      "status": "active"
+    },
+    "ACEUSDT": {
+      "listing_date": "2023-12-18",
+      "status": "active"
+    },
+    "MOVRUSDT": {
+      "listing_date": "2023-12-26",
+      "status": "active"
+    },
+    "NFPUSDT": {
+      "listing_date": "2023-12-27",
+      "status": "active"
+    },
+    "AIUSDT": {
+      "listing_date": "2024-01-08",
+      "status": "active"
+    },
+    "XAIUSDT": {
+      "listing_date": "2024-01-09",
+      "status": "active"
+    },
+    "WIFUSDT": {
+      "listing_date": "2024-01-18",
+      "status": "active"
+    },
+    "MANTAUSDT": {
+      "listing_date": "2024-01-18",
+      "status": "active"
+    },
+    "ONDOUSDT": {
+      "listing_date": "2024-01-20",
+      "status": "active"
+    },
+    "LSKUSDT": {
+      "listing_date": "2024-01-25",
+      "status": "active"
+    },
+    "ALTUSDT": {
+      "listing_date": "2024-01-25",
+      "status": "active"
+    },
+    "JUPUSDT": {
+      "listing_date": "2024-02-01",
+      "status": "active"
+    },
+    "ZETAUSDT": {
+      "listing_date": "2024-02-02",
+      "status": "active"
+    },
+    "RONINUSDT": {
+      "listing_date": "2024-02-06",
+      "status": "active"
+    },
+    "DYMUSDT": {
+      "listing_date": "2024-02-07",
+      "status": "active"
+    },
+    "OMUSDT": {
+      "listing_date": "2024-02-13",
+      "status": "active"
+    },
+    "PIXELUSDT": {
+      "listing_date": "2024-02-19",
+      "status": "active"
+    },
+    "STRKUSDT": {
+      "listing_date": "2024-02-21",
+      "status": "active"
+    },
+    "GLMUSDT": {
+      "listing_date": "2024-02-22",
+      "status": "active"
+    },
+    "PORTALUSDT": {
+      "listing_date": "2024-02-29",
+      "status": "active"
+    },
+    "TONUSDT": {
+      "listing_date": "2024-03-01",
+      "status": "active"
+    },
+    "AXLUSDT": {
+      "listing_date": "2024-03-01",
+      "status": "active"
+    },
+    "MYROUSDT": {
+      "listing_date": "2024-03-05",
+      "status": "active"
+    },
+    "METISUSDT": {
+      "listing_date": "2024-03-12",
+      "status": "active"
+    },
+    "AEVOUSDT": {
+      "listing_date": "2024-03-13",
+      "status": "active"
+    },
+    "VANRYUSDT": {
+      "listing_date": "2024-03-14",
+      "status": "active"
+    },
+    "BOMEUSDT": {
+      "listing_date": "2024-03-16",
+      "status": "active"
+    },
+    "ETHFIUSDT": {
+      "listing_date": "2024-03-18",
+      "status": "active"
+    },
+    "ENAUSDT": {
+      "listing_date": "2024-04-02",
+      "status": "active"
+    },
+    "WUSDT": {
+      "listing_date": "2024-04-03",
+      "status": "active"
+    },
+    "TNSRUSDT": {
+      "listing_date": "2024-04-09",
+      "status": "active"
+    },
+    "SAGAUSDT": {
+      "listing_date": "2024-04-09",
+      "status": "active"
+    },
+    "TAOUSDT": {
+      "listing_date": "2024-04-11",
+      "status": "active"
+    },
+    "OMNIUSDT": {
+      "listing_date": "2024-04-17",
+      "status": "active"
+    },
+    "REZUSDT": {
+      "listing_date": "2024-04-30",
+      "status": "active"
+    },
+    "BBUSDT": {
+      "listing_date": "2024-05-13",
+      "status": "active"
+    },
+    "NOTUSDT": {
+      "listing_date": "2024-05-16",
+      "status": "active"
+    },
+    "TURBOUSDT": {
+      "listing_date": "2024-05-30",
+      "status": "active"
+    },
+    "IOUSDT": {
+      "listing_date": "2024-06-11",
+      "status": "active"
+    },
+    "ZKUSDT": {
+      "listing_date": "2024-06-17",
+      "status": "active"
+    },
+    "MEWUSDT": {
+      "listing_date": "2024-06-17",
+      "status": "active"
+    },
+    "LISTAUSDT": {
+      "listing_date": "2024-06-20",
+      "status": "active"
+    },
+    "ZROUSDT": {
+      "listing_date": "2024-06-20",
+      "status": "active"
+    },
+    "RENDERUSDT": {
+      "listing_date": "2024-07-26",
+      "status": "active"
+    },
+    "BANANAUSDT": {
+      "listing_date": "2024-08-15",
+      "status": "active"
+    },
+    "RAREUSDT": {
+      "listing_date": "2024-08-15",
+      "status": "active"
+    },
+    "GUSDT": {
+      "listing_date": "2024-08-15",
+      "status": "active"
+    },
+    "SYNUSDT": {
+      "listing_date": "2024-08-16",
+      "status": "active"
+    },
+    "SYSUSDT": {
+      "listing_date": "2024-08-19",
+      "status": "active"
+    },
+    "VOXELUSDT": {
+      "listing_date": "2024-08-20",
+      "status": "active"
+    },
+    "BRETTUSDT": {
+      "listing_date": "2024-08-20",
+      "status": "active"
+    },
+    "ALPACAUSDT": {
+      "listing_date": "2024-08-22",
+      "status": "inactive"
+    },
+    "POPCATUSDT": {
+      "listing_date": "2024-08-22",
+      "status": "active"
+    },
+    "SUNUSDT": {
+      "listing_date": "2024-08-22",
+      "status": "active"
+    },
+    "VIDTUSDT": {
+      "listing_date": "2024-08-23",
+      "status": "inactive"
+    },
+    "NULSUSDT": {
+      "listing_date": "2024-08-26",
+      "status": "inactive"
+    },
+    "DOGSUSDT": {
+      "listing_date": "2024-08-26",
+      "status": "active"
+    },
+    "MBOXUSDT": {
+      "listing_date": "2024-08-28",
+      "status": "active"
+    },
+    "CHESSUSDT": {
+      "listing_date": "2024-08-29",
+      "status": "active"
+    },
+    "FLUXUSDT": {
+      "listing_date": "2024-09-03",
+      "status": "active"
+    },
+    "BSWUSDT": {
+      "listing_date": "2024-09-05",
+      "status": "active"
+    },
+    "QUICKUSDT": {
+      "listing_date": "2024-09-06",
+      "status": "active"
+    },
+    "NEIROETHUSDT": {
+      "listing_date": "2024-09-06",
+      "status": "active"
+    },
+    "RPLUSDT": {
+      "listing_date": "2024-09-09",
+      "status": "active"
+    },
+    "POLUSDT": {
+      "listing_date": "2024-09-13",
+      "status": "active"
+    },
+    "UXLINKUSDT": {
+      "listing_date": "2024-09-15",
+      "status": "active"
+    },
+    "1MBABYDOGEUSDT": {
+      "listing_date": "2024-09-16",
+      "status": "active"
+    },
+    "NEIROUSDT": {
+      "listing_date": "2024-09-16",
+      "status": "active"
+    },
+    "KDAUSDT": {
+      "listing_date": "2024-09-18",
+      "status": "active"
+    },
+    "FIDAUSDT": {
+      "listing_date": "2024-09-19",
+      "status": "active"
+    },
+    "FIOUSDT": {
+      "listing_date": "2024-09-20",
+      "status": "active"
+    },
+    "CATIUSDT": {
+      "listing_date": "2024-09-20",
+      "status": "active"
+    },
+    "GHSTUSDT": {
+      "listing_date": "2024-09-23",
+      "status": "active"
+    },
+    "LOKAUSDT": {
+      "listing_date": "2024-09-24",
+      "status": "inactive"
+    },
+    "HMSTRUSDT": {
+      "listing_date": "2024-09-26",
+      "status": "active"
+    },
+    "REIUSDT": {
+      "listing_date": "2024-09-27",
+      "status": "active"
+    },
+    "COSUSDT": {
+      "listing_date": "2024-09-30",
+      "status": "active"
+    },
+    "EIGENUSDT": {
+      "listing_date": "2024-10-01",
+      "status": "active"
+    },
+    "DIAUSDT": {
+      "listing_date": "2024-10-02",
+      "status": "active"
+    },
+    "1000CATUSDT": {
+      "listing_date": "2024-10-21",
+      "status": "active"
+    },
+    "SCRUSDT": {
+      "listing_date": "2024-10-22",
+      "status": "active"
+    },
+    "GOATUSDT": {
+      "listing_date": "2024-10-24",
+      "status": "active"
+    },
+    "MOODENGUSDT": {
+      "listing_date": "2024-10-25",
+      "status": "active"
+    },
+    "SAFEUSDT": {
+      "listing_date": "2024-10-25",
+      "status": "active"
+    },
+    "SANTOSUSDT": {
+      "listing_date": "2024-10-28",
+      "status": "active"
+    },
+    "TROYUSDT": {
+      "listing_date": "2024-10-31",
+      "status": "inactive"
+    },
+    "PONKEUSDT": {
+      "listing_date": "2024-11-04",
+      "status": "active"
+    },
+    "COWUSDT": {
+      "listing_date": "2024-11-06",
+      "status": "active"
+    },
+    "CETUSUSDT": {
+      "listing_date": "2024-11-06",
+      "status": "active"
+    },
+    "1000000MOGUSDT": {
+      "listing_date": "2024-11-07",
+      "status": "active"
+    },
+    "GRASSUSDT": {
+      "listing_date": "2024-11-08",
+      "status": "active"
+    },
+    "DRIFTUSDT": {
+      "listing_date": "2024-11-09",
+      "status": "active"
+    },
+    "SWELLUSDT": {
+      "listing_date": "2024-11-09",
+      "status": "active"
+    },
+    "ACTUSDT": {
+      "listing_date": "2024-11-11",
+      "status": "active"
+    },
+    "PNUTUSDT": {
+      "listing_date": "2024-11-11",
+      "status": "active"
+    },
+    "HIPPOUSDT": {
+      "listing_date": "2024-11-13",
+      "status": "active"
+    },
+    "1000XUSDT": {
+      "listing_date": "2024-11-13",
+      "status": "active"
+    },
+    "DEGENUSDT": {
+      "listing_date": "2024-11-15",
+      "status": "active"
+    },
+    "BANUSDT": {
+      "listing_date": "2024-11-18",
+      "status": "active"
+    },
+    "AKTUSDT": {
+      "listing_date": "2024-11-18",
+      "status": "active"
+    },
+    "SLERFUSDT": {
+      "listing_date": "2024-11-21",
+      "status": "active"
+    },
+    "SCRTUSDT": {
+      "listing_date": "2024-11-21",
+      "status": "active"
+    },
+    "1000CHEEMSUSDT": {
+      "listing_date": "2024-11-25",
+      "status": "active"
+    },
+    "1000WHYUSDT": {
+      "listing_date": "2024-11-25",
+      "status": "active"
+    },
+    "THEUSDT": {
+      "listing_date": "2024-11-27",
+      "status": "active"
+    },
+    "MORPHOUSDT": {
+      "listing_date": "2024-11-27",
+      "status": "active"
+    },
+    "CHILLGUYUSDT": {
+      "listing_date": "2024-11-27",
+      "status": "active"
+    },
+    "KAIAUSDT": {
+      "listing_date": "2024-12-04",
+      "status": "active"
+    },
+    "AEROUSDT": {
+      "listing_date": "2024-12-04",
+      "status": "active"
+    },
+    "ACXUSDT": {
+      "listing_date": "2024-12-06",
+      "status": "active"
+    },
+    "ORCAUSDT": {
+      "listing_date": "2024-12-06",
+      "status": "active"
+    },
+    "MOVEUSDT": {
+      "listing_date": "2024-12-09",
+      "status": "active"
+    },
+    "RAYSOLUSDT": {
+      "listing_date": "2024-12-10",
+      "status": "active"
+    },
+    "KOMAUSDT": {
+      "listing_date": "2024-12-10",
+      "status": "active"
+    },
+    "VIRTUALUSDT": {
+      "listing_date": "2024-12-10",
+      "status": "active"
+    },
+    "SPXUSDT": {
+      "listing_date": "2024-12-10",
+      "status": "active"
+    },
+    "MEUSDT": {
+      "listing_date": "2024-12-11",
+      "status": "active"
+    },
+    "AVAUSDT": {
+      "listing_date": "2024-12-13",
+      "status": "active"
+    },
+    "DEGOUSDT": {
+      "listing_date": "2024-12-13",
+      "status": "active"
+    },
+    "VELODROMEUSDT": {
+      "listing_date": "2024-12-14",
+      "status": "active"
+    },
+    "MOCAUSDT": {
+      "listing_date": "2024-12-16",
+      "status": "active"
+    },
+    "VANAUSDT": {
+      "listing_date": "2024-12-16",
+      "status": "active"
+    },
+    "PENGUUSDT": {
+      "listing_date": "2024-12-18",
+      "status": "active"
+    },
+    "LUMIAUSDT": {
+      "listing_date": "2024-12-18",
+      "status": "active"
+    },
+    "USUALUSDT": {
+      "listing_date": "2024-12-18",
+      "status": "active"
+    },
+    "AIXBTUSDT": {
+      "listing_date": "2024-12-21",
+      "status": "active"
+    },
+    "FARTCOINUSDT": {
+      "listing_date": "2024-12-21",
+      "status": "active"
+    },
+    "KMNOUSDT": {
+      "listing_date": "2024-12-21",
+      "status": "active"
+    },
+    "CGPTUSDT": {
+      "listing_date": "2024-12-21",
+      "status": "active"
+    },
+    "HIVEUSDT": {
+      "listing_date": "2024-12-23",
+      "status": "active"
+    },
+    "DEXEUSDT": {
+      "listing_date": "2024-12-24",
+      "status": "active"
+    },
+    "PHAUSDT": {
+      "listing_date": "2024-12-30",
+      "status": "active"
+    },
+    "DFUSDT": {
+      "listing_date": "2024-12-30",
+      "status": "active"
+    },
+    "GRIFFAINUSDT": {
+      "listing_date": "2025-01-02",
+      "status": "active"
+    },
+    "AI16ZUSDT": {
+      "listing_date": "2025-01-02",
+      "status": "active"
+    },
+    "ZEREBROUSDT": {
+      "listing_date": "2025-01-02",
+      "status": "active"
+    },
+    "BIOUSDT": {
+      "listing_date": "2025-01-03",
+      "status": "active"
+    },
+    "COOKIEUSDT": {
+      "listing_date": "2025-01-07",
+      "status": "active"
+    },
+    "ALCHUSDT": {
+      "listing_date": "2025-01-07",
+      "status": "active"
+    },
+    "SWARMSUSDT": {
+      "listing_date": "2025-01-07",
+      "status": "active"
+    },
+    "SONICUSDT": {
+      "listing_date": "2025-01-08",
+      "status": "active"
+    },
+    "DUSDT": {
+      "listing_date": "2025-01-09",
+      "status": "active"
+    },
+    "PROMUSDT": {
+      "listing_date": "2025-01-15",
+      "status": "active"
+    },
+    "SUSDT": {
+      "listing_date": "2025-01-16",
+      "status": "active"
+    },
+    "SOLVUSDT": {
+      "listing_date": "2025-01-17",
+      "status": "active"
+    },
+    "ARCUSDT": {
+      "listing_date": "2025-01-17",
+      "status": "active"
+    },
+    "AVAAIUSDT": {
+      "listing_date": "2025-01-17",
+      "status": "active"
+    },
+    "TRUMPUSDT": {
+      "listing_date": "2025-01-18",
+      "status": "active"
+    },
+    "MELANIAUSDT": {
+      "listing_date": "2025-01-20",
+      "status": "active"
+    },
+    "VTHOUSDT": {
+      "listing_date": "2025-01-22",
+      "status": "active"
+    },
+    "ANIMEUSDT": {
+      "listing_date": "2025-01-24",
+      "status": "active"
+    },
+    "VINEUSDT": {
+      "listing_date": "2025-01-24",
+      "status": "active"
+    },
+    "PIPPINUSDT": {
+      "listing_date": "2025-01-24",
+      "status": "active"
+    },
+    "VVVUSDT": {
+      "listing_date": "2025-01-29",
+      "status": "active"
+    },
+    "BERAUSDT": {
+      "listing_date": "2025-02-06",
+      "status": "active"
+    },
+    "TSTUSDT": {
+      "listing_date": "2025-02-09",
+      "status": "active"
+    },
+    "LAYERUSDT": {
+      "listing_date": "2025-02-11",
+      "status": "active"
+    },
+    "HEIUSDT": {
+      "listing_date": "2025-02-13",
+      "status": "active"
+    },
+    "B3USDT": {
+      "listing_date": "2025-02-13",
+      "status": "active"
+    },
+    "IPUSDT": {
+      "listing_date": "2025-02-14",
+      "status": "active"
+    },
+    "GPSUSDT": {
+      "listing_date": "2025-02-18",
+      "status": "active"
+    },
+    "SHELLUSDT": {
+      "listing_date": "2025-02-18",
+      "status": "active"
+    },
+    "KAITOUSDT": {
+      "listing_date": "2025-02-20",
+      "status": "active"
+    },
+    "REDUSDT": {
+      "listing_date": "2025-03-07",
+      "status": "active"
+    },
+    "VICUSDT": {
+      "listing_date": "2025-03-13",
+      "status": "active"
+    },
+    "EPICUSDT": {
+      "listing_date": "2025-03-13",
+      "status": "active"
+    },
+    "BMTUSDT": {
+      "listing_date": "2025-03-17",
+      "status": "active"
+    },
+    "MUBARAKUSDT": {
+      "listing_date": "2025-03-17",
+      "status": "active"
+    },
+    "FORMUSDT": {
+      "listing_date": "2025-03-19",
+      "status": "active"
+    },
+    "BIDUSDT": {
+      "listing_date": "2025-03-20",
+      "status": "active"
+    },
+    "TUTUSDT": {
+      "listing_date": "2025-03-20",
+      "status": "active"
+    },
+    "BROCCOLI714USDT": {
+      "listing_date": "2025-03-21",
+      "status": "active"
+    },
+    "BROCCOLIF3BUSDT": {
+      "listing_date": "2025-03-21",
+      "status": "active"
+    },
+    "SIRENUSDT": {
+      "listing_date": "2025-03-22",
+      "status": "active"
+    },
+    "BANANAS31USDT": {
+      "listing_date": "2025-03-22",
+      "status": "active"
+    },
+    "BRUSDT": {
+      "listing_date": "2025-03-21",
+      "status": "active"
+    },
+    "PLUMEUSDT": {
+      "listing_date": "2025-03-21",
+      "status": "active"
+    },
+    "NILUSDT": {
+      "listing_date": "2025-03-24",
+      "status": "active"
+    },
+    "PARTIUSDT": {
+      "listing_date": "2025-03-25",
+      "status": "active"
+    },
+    "JELLYJELLYUSDT": {
+      "listing_date": "2025-03-27",
+      "status": "active"
+    },
+    "MAVIAUSDT": {
+      "listing_date": "2025-03-27",
+      "status": "active"
+    },
+    "PAXGUSDT": {
+      "listing_date": "2025-03-27",
+      "status": "active"
+    },
+    "WALUSDT": {
+      "listing_date": "2025-03-27",
+      "status": "active"
+    },
+    "FUNUSDT": {
+      "listing_date": "2025-03-31",
+      "status": "active"
+    },
+    "MLNUSDT": {
+      "listing_date": "2025-03-31",
+      "status": "active"
+    },
+    "GUNUSDT": {
+      "listing_date": "2025-03-31",
+      "status": "active"
+    },
+    "ATHUSDT": {
+      "listing_date": "2025-04-02",
+      "status": "active"
+    },
+    "BABYUSDT": {
+      "listing_date": "2025-04-05",
+      "status": "active"
+    },
+    "FORTHUSDT": {
+      "listing_date": "2025-04-08",
+      "status": "active"
+    },
+    "PROMPTUSDT": {
+      "listing_date": "2025-04-11",
+      "status": "active"
+    },
+    "XCNUSDT": {
+      "listing_date": "2025-04-11",
+      "status": "active"
+    },
+    "STOUSDT": {
+      "listing_date": "2025-04-12",
+      "status": "active"
+    },
+    "FHEUSDT": {
+      "listing_date": "2025-04-12",
+      "status": "active"
+    },
+    "KERNELUSDT": {
+      "listing_date": "2025-04-14",
+      "status": "active"
+    },
+    "WCTUSDT": {
+      "listing_date": "2025-04-15",
+      "status": "active"
+    },
+    "INITUSDT": {
+      "listing_date": "2025-04-16",
+      "status": "active"
+    },
+    "AERGOUSDT": {
+      "listing_date": "2025-04-16",
+      "status": "active"
+    },
+    "BANKUSDT": {
+      "listing_date": "2025-04-19",
+      "status": "active"
+    },
+    "EPTUSDT": {
+      "listing_date": "2025-04-21",
+      "status": "active"
+    },
+    "DEEPUSDT": {
+      "listing_date": "2025-04-22",
+      "status": "active"
+    },
+    "HYPERUSDT": {
+      "listing_date": "2025-04-22",
+      "status": "active"
+    },
+    "MEMEFIUSDT": {
+      "listing_date": "2025-04-25",
+      "status": "inactive"
+    },
+    "FISUSDT": {
+      "listing_date": "2025-04-25",
+      "status": "active"
+    },
+    "JSTUSDT": {
+      "listing_date": "2025-04-28",
+      "status": "active"
+    },
+    "SIGNUSDT": {
+      "listing_date": "2025-04-28",
+      "status": "active"
+    },
+    "PUNDIXUSDT": {
+      "listing_date": "2025-04-30",
+      "status": "active"
+    },
+    "CTKUSDT": {
+      "listing_date": "2025-04-30",
+      "status": "active"
+    },
+    "AIOTUSDT": {
+      "listing_date": "2025-04-30",
+      "status": "active"
+    },
+    "DOLOUSDT": {
+      "listing_date": "2025-05-01",
+      "status": "active"
+    },
+    "HAEDALUSDT": {
+      "listing_date": "2025-05-01",
+      "status": "active"
+    },
+    "SXTUSDT": {
+      "listing_date": "2025-05-02",
+      "status": "active"
+    },
+    "ASRUSDT": {
+      "listing_date": "2025-05-06",
+      "status": "active"
+    },
+    "ALPINEUSDT": {
+      "listing_date": "2025-05-06",
+      "status": "active"
+    },
+    "B2USDT": {
+      "listing_date": "2025-05-06",
+      "status": "active"
+    },
+    "MILKUSDT": {
+      "listing_date": "2025-05-06",
+      "status": "active"
+    },
+    "SYRUPUSDT": {
+      "listing_date": "2025-05-07",
+      "status": "active"
+    },
+    "OBOLUSDT": {
+      "listing_date": "2025-05-07",
+      "status": "active"
+    },
+    "DOODUSDT": {
+      "listing_date": "2025-05-09",
+      "status": "active"
+    },
+    "OGUSDT": {
+      "listing_date": "2025-05-12",
+      "status": "active"
+    },
+    "ZKJUSDT": {
+      "listing_date": "2025-05-13",
+      "status": "active"
+    },
+    "SKYAIUSDT": {
+      "listing_date": "2025-05-13",
+      "status": "active"
+    },
+    "NXPCUSDT": {
+      "listing_date": "2025-05-15",
+      "status": "active"
+    },
+    "CVCUSDT": {
+      "listing_date": "2025-05-16",
+      "status": "active"
+    },
+    "AGTUSDT": {
+      "listing_date": "2025-05-20",
+      "status": "active"
+    },
+    "AWEUSDT": {
+      "listing_date": "2025-05-21",
+      "status": "active"
+    },
+    "BUSDT": {
+      "listing_date": "2025-05-23",
+      "status": "active"
+    },
+    "SOONUSDT": {
+      "listing_date": "2025-05-23",
+      "status": "active"
+    },
+    "HUMAUSDT": {
+      "listing_date": "2025-05-26",
+      "status": "active"
+    },
+    "AUSDT": {
+      "listing_date": "2025-05-28",
+      "status": "active"
+    },
+    "SOPHUSDT": {
+      "listing_date": "2025-05-28",
+      "status": "active"
+    },
+    "MERLUSDT": {
+      "listing_date": "2025-05-29",
+      "status": "active"
+    },
+    "HYPEUSDT": {
+      "listing_date": "2025-05-30",
+      "status": "active"
+    },
+    "BDXNUSDT": {
+      "listing_date": "2025-06-03",
+      "status": "active"
+    },
+    "PUFFERUSDT": {
+      "listing_date": "2025-06-04",
+      "status": "active"
+    },
+    "PORT3USDT": {
+      "listing_date": "2025-06-04",
+      "status": "active"
+    },
+    "1000000BOBUSDT": {
+      "listing_date": "2025-06-05",
+      "status": "active"
+    },
+    "LAUSDT": {
+      "listing_date": "2025-06-05",
+      "status": "active"
+    },
+    "SKATEUSDT": {
+      "listing_date": "2025-06-09",
+      "status": "active"
+    },
+    "HOMEUSDT": {
+      "listing_date": "2025-06-10",
+      "status": "active"
+    },
+    "RESOLVUSDT": {
+      "listing_date": "2025-06-10",
+      "status": "active"
+    },
+    "TAIKOUSDT": {
+      "listing_date": "2025-06-11",
+      "status": "active"
+    },
+    "SQDUSDT": {
+      "listing_date": "2025-06-11",
+      "status": "active"
+    },
+    "PUMPBTCUSDT": {
+      "listing_date": "2025-06-13",
+      "status": "active"
+    },
+    "SPKUSDT": {
+      "listing_date": "2025-06-17",
+      "status": "active"
+    },
+    "MYXUSDT": {
+      "listing_date": "2025-06-18",
+      "status": "active"
+    },
+    "FUSDT": {
+      "listing_date": "2025-06-18",
+      "status": "active"
+    },
+    "NEWTUSDT": {
+      "listing_date": "2025-06-19",
+      "status": "active"
+    },
+    "DMCUSDT": {
+      "listing_date": "2025-06-24",
+      "status": "active"
+    },
+    "HUSDT": {
+      "listing_date": "2025-06-25",
+      "status": "active"
+    },
+    "OLUSDT": {
+      "listing_date": "2025-06-25",
+      "status": "active"
+    },
+    "SAHARAUSDT": {
+      "listing_date": "2025-06-26",
+      "status": "active"
+    },
+    "ICNTUSDT": {
+      "listing_date": "2025-07-03",
+      "status": "active"
+    },
+    "BULLAUSDT": {
+      "listing_date": "2025-07-04",
+      "status": "active"
+    },
+    "IDOLUSDT": {
+      "listing_date": "2025-07-04",
+      "status": "active"
+    },
+    "MUSDT": {
+      "listing_date": "2025-07-07",
+      "status": "active"
+    },
+    "TANSSIUSDT": {
+      "listing_date": "2025-07-09",
+      "status": "active"
+    },
+    "PUMPUSDT": {
+      "listing_date": "2025-07-10",
+      "status": "active"
+    },
+    "CROSSUSDT": {
+      "listing_date": "2025-07-10",
+      "status": "active"
+    },
+    "AINUSDT": {
+      "listing_date": "2025-07-10",
+      "status": "active"
+    },
+    "CUSDT": {
+      "listing_date": "2025-07-15",
+      "status": "active"
+    },
+    "VELVETUSDT": {
+      "listing_date": "2025-07-15",
+      "status": "active"
+    },
+    "TACUSDT": {
+      "listing_date": "2025-07-15",
+      "status": "active"
+    },
+    "ERAUSDT": {
+      "listing_date": "2025-07-17",
+      "status": "active"
+    },
+    "TAUSDT": {
+      "listing_date": "2025-07-21",
+      "status": "active"
+    },
+    "CVXUSDT": {
+      "listing_date": "2025-07-23",
+      "status": "active"
+    },
+    "SLPUSDT": {
+      "listing_date": "2025-07-23",
+      "status": "active"
+    },
+    "ZORAUSDT": {
+      "listing_date": "2025-07-25",
+      "status": "active"
+    },
+    "TAGUSDT": {
+      "listing_date": "2025-07-25",
+      "status": "active"
+    },
+    "ZRCUSDT": {
+      "listing_date": "2025-07-29",
+      "status": "active"
+    },
+    "ESPORTSUSDT": {
+      "listing_date": "2025-07-29",
+      "status": "active"
+    },
+    "TREEUSDT": {
+      "listing_date": "2025-07-29",
+      "status": "active"
+    },
+    "A2ZUSDT": {
+      "listing_date": "2025-07-30",
+      "status": "active"
+    },
+    "PLAYUSDT": {
+      "listing_date": "2025-07-31",
+      "status": "active"
+    },
+    "NAORISUSDT": {
+      "listing_date": "2025-07-31",
+      "status": "active"
+    },
+    "TOWNSUSDT": {
+      "listing_date": "2025-08-05",
+      "status": "active"
+    },
+    "PROVEUSDT": {
+      "listing_date": "2025-08-06",
+      "status": "active"
+    },
+    "ALLUSDT": {
+      "listing_date": "2025-08-06",
+      "status": "active"
+    },
+    "INUSDT": {
+      "listing_date": "2025-08-07",
+      "status": "active"
+    },
+    "YALAUSDT": {
+      "listing_date": "2025-08-08",
+      "status": "active"
+    },
+    "CARVUSDT": {
+      "listing_date": "2025-08-08",
+      "status": "active"
+    },
+    "AIOUSDT": {
+      "listing_date": "2025-08-13",
+      "status": "active"
+    },
+    "XNYUSDT": {
+      "listing_date": "2025-08-13",
+      "status": "active"
+    },
+    "USELESSUSDT": {
+      "listing_date": "2025-08-15",
+      "status": "active"
+    }
+  }
+}

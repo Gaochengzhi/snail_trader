@@ -1,0 +1,40 @@
+# Dependencies
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Data files
+data/
+logs/
+*.zip
+*.csv
+!/updates/*.zip
+
+# IDE and editor files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Python cache
+*/.DS_Store
+*/.idea/
+*/__pycache__/
+
+# Configuration files with sensitive data
+config_local.yaml
+.env
+.env.local
+
+# Version control
+.python-version
+
+# Temporary files
+tmp/
+temp/

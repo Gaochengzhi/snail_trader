@@ -1,0 +1,48 @@
+# 测试模式配置 - 简化版本
+# 用于组件测试，不涉及时间回测
+
+# 数据访问配置
+data_access:
+  duckdb:
+    db_path: "data/binance.duckdb"
+    data_path: "data/binance_parquet"
+  api:
+    base_url: "https://fapi.binance.com"
+    default_rate_limit: 30
+    default_timeout: 20
+    max_concurrent: 10
+    rate_limiter:
+      initial_rate: 30.0
+      min_rate: 1.0
+      max_rate: 60.0
+      backoff_factor: 0.5
+      recovery_factor: 1.1
+      timeout_threshold: 10.0
+      error_threshold: 3
+
+# 指标引擎配置
+indicators:
+  cache:
+    max_entries_per_symbol: 100
+    cleanup_interval_minutes: 60
+  window:
+    max_window_size: 250
+
+# Framework配置
+framework:
+  mode: test
+  ports:
+    global_events: 5555
+    market_data: 5556
+    task_results: 5557
+    state_management: 5558
+
+# 日志配置
+log_service:
+  directory: logs
+  console_output: true
+  file_output: true
+  max_file_size_mb: 10
+  backup_count: 3
+  levels: ["INFO", "DEBUG", "WARNING", "ERROR"]
+

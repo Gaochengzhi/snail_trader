@@ -1,0 +1,54 @@
+# 实时模式配置
+# 从当前时间开始实时运行
+
+# 时间控制配置
+time_control:
+  run_from_datetime: null                   # null = 从现在开始
+  mode: "live"                              # 实时模式
+  interval_hours: 4                         # 每4小时运行一次
+  execution_interval_seconds: 14400         # 4小时 = 14400秒
+
+# 数据访问配置
+data_access:
+  duckdb:
+    db_path: "data/binance.duckdb"
+    data_path: "data/binance_parquet"
+  api:
+    base_url: "https://fapi.binance.com"
+    default_rate_limit: 20                  # 实时模式更保守的限流
+    default_timeout: 30
+    max_concurrent: 5
+    rate_limiter:
+      initial_rate: 20.0
+      min_rate: 1.0
+      max_rate: 30.0
+      backoff_factor: 0.5
+      recovery_factor: 1.05
+      timeout_threshold: 15.0
+      error_threshold: 2
+
+# 指标引擎配置
+indicators:
+  cache:
+    max_entries_per_symbol: 200   # 实时模式较小缓存
+    cleanup_interval_minutes: 30
+  window:
+    max_window_size: 250
+
+# Framework配置
+framework:
+  mode: live
+  ports:
+    global_events: 5555
+    market_data: 5556
+    task_results: 5557
+    state_management: 5558
+
+# 日志配置
+log_service:
+  directory: logs
+  console_output: true
+  file_output: true
+  max_file_size_mb: 50
+  backup_count: 7
+  levels: ["INFO", "WARNING", "ERROR"]

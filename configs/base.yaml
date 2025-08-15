@@ -1,0 +1,56 @@
+# 基础配置文件
+
+llm:
+  active_fallback_list:
+    - gpt_light
+    - gpt_free
+    - ollama
+  enable_streaming: false
+  max_retries: 3
+  max_tokens: null
+  providers:
+    gpt_free:
+      api_key: ${OPENROUTER_API_KEY}
+      base_url: https://openrouter.ai/api/v1
+      max_concurrent: 5
+      model: deepseek/deepseek-chat-v3-0324:free
+      provider: openroute
+    gpt_light:
+      api_key: ${GEMINI_API_KEY}
+      base_url: https://api.tu-zi.com/v1
+      max_concurrent: 10
+      model: gemini-2.5-flash
+      provider: gemini_flash
+    gpt_pro:
+      api_key: ${GEMINI_API_KEY}
+      base_url: https://api.tu-zi.com/v1
+      max_concurrent: 8
+      model: gemini-2.5-pro-preview-06-05
+      provider: gemini
+    ollama:
+      base_url: http://localhost:11434
+      max_concurrent: 1
+      model: qwen3:4b
+      provider: ollama
+  retry_delay: 1.0
+  temperature: 0.7
+
+# 市场基础参数
+market:
+  fee: 0.0003                    # 交易手续费
+  universe: Binance              # 交易所
+
+# Framework基础配置
+framework:
+  # ZeroMQ端口配置
+  ports:
+    global_events: 5555
+    market_data: 5556
+    task_results: 5557
+    state_management: 5558
+
+# WebUI服务配置
+webui:
+  enabled: true
+  host: "0.0.0.0"
+  port: 8080

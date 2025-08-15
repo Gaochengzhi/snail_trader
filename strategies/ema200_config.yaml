@@ -1,0 +1,26 @@
+# EMA200突破策略配置
+strategy:
+  name: "ema200_strategy"
+  description: "EMA200突破策略 - 监控BTC和ETH的200天EMA突破"
+  
+  # 监控的交易对
+  symbols:
+    - "BTCUSDT"
+    - "ETHUSDT"
+  
+  # 技术指标参数
+  indicators:
+    ema_period: 200
+    interval: "4h"
+  
+  # WebUI数据格式
+  webui_data:
+    kline_format: "ohlcv"  # 标准K线格式
+    signal_types:
+      - "BUY"
+      - "SELL"
+    data_types:
+      - "kline"     # K线数据
+      - "signal"    # 交易信号
+      - "progress"  # 回测进度
+      - "metrics"   # 实时指标

@@ -1,0 +1,60 @@
+# Enhanced Test Configuration for Binance Public Data Downloader
+
+# Base settings
+base_url: "https://data.binance.vision/data/futures/um/daily/"
+output_directory: "./data"
+log_directory: "./data/logs"
+
+# Time range settings (small range for testing)
+time_range:
+  start_date: "2024-08-01"
+  end_date: "2024-08-04"
+
+# Data types to download (limited for testing)
+data_types:
+  aggTrades: false
+  bookDepth: false
+  bookTicker: false
+  indexPriceKlines: false
+  klines: true
+  markPriceKlines: false
+  metrics: false
+  premiumIndexKlines: false
+  trades: false
+
+# Klines intervals (limited for testing)
+kline_intervals:
+  - "1h"
+  - "1d"
+
+# Trading pairs (small set for testing)
+trading_pairs:
+  - "BTCUSDT"
+  - "ETHUSDT"
+
+# Download settings
+download:
+  max_concurrent_downloads: 2
+  retry_attempts: 2
+  retry_delay: 1
+  rate_limit_delay: 0.05
+  chunk_size: 4096
+
+# File processing
+file_processing:
+  auto_extract: true
+  delete_zip_after_extract: true
+  overwrite_existing: false
+  min_file_size: 50 # Smaller threshold for testing
+
+# Logging
+logging:
+  level: "INFO"
+  console_output: true
+  file_output: true
+  max_log_file_size: "10MB"
+  backup_count: 2
+
+# UI settings
+ui:
+  progress_bar_width: 80 # Narrower for testing

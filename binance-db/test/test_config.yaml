@@ -1,0 +1,55 @@
+# Test Configuration - Download single day, single symbol data
+
+# Base settings
+base_url: "https://data.binance.vision/data/futures/um/daily/"
+output_directory: "./data"
+log_directory: "./data/logs"
+
+# Time range settings - single day for testing
+time_range:
+  start_date: "2024-08-01" # Single day
+  end_date: "2024-08-01"
+
+# Data types to download - enable all for comprehensive testing
+data_types:
+  aggTrades: true
+  bookDepth: true
+  bookTicker: false
+  indexPriceKlines: true
+  klines: true
+  markPriceKlines: true
+  metrics: true
+  premiumIndexKlines: true
+  trades: true
+
+# Klines intervals - test with common intervals
+kline_intervals:
+  - "1d"
+  - "1h"
+  - "15m"
+
+# Trading pairs - single symbol for testing
+trading_pairs:
+  - "BTCUSDT"
+
+# Download settings - conservative for testing
+download:
+  max_concurrent_downloads: 1 # Single thread for testing
+  retry_attempts: 2
+  retry_delay: 3
+  rate_limit_delay: 0.5 # Slower for testing
+  chunk_size: 8192
+
+# File processing
+file_processing:
+  auto_extract: true
+  delete_zip_after_extract: true
+  overwrite_existing: true # Force re-download for testing
+
+# Logging - verbose for testing
+logging:
+  level: "DEBUG"
+  console_output: true
+  file_output: true
+  max_log_file_size: "5MB"
+  backup_count: 2
